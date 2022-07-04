@@ -10,7 +10,7 @@ public class Damager : Collideable
             playerDamage(coll);
     }
 
-    private void playerDamage(Collider2D playerColl)
+    protected virtual void playerDamage(Collider2D playerColl)
     {
         playerColl.GetComponent<PlayerCombat>().dmgPlayer(gameObject.transform.position.x, 1f); // o dano é só um por agr pq isso não importa nesse estágio    
     }

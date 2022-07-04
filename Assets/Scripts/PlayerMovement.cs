@@ -20,8 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching;
 
     //combat tests
-    public bool takingDamage;
-    public bool dead;
+    private PlayerCombat combatScript;
+    //public bool takingDamage;
+    //public bool dead;
     public bool dashing;
     protected virtual void Start()
     {
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         playerFeetCollider = gameObject.GetComponent<CapsuleCollider2D>();
         playerBodyCollider = gameObject.GetComponent<BoxCollider2D>();
         playerAnim = gameObject.GetComponent<Animator>();
+
+        combatScript = gameObject.GetComponent<PlayerCombat>();
     }
 
     // Update is called once per frame
@@ -150,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMoveCheck()
     {
-        if (takingDamage || dead || dashing)
+        if (combatScript.takingDamage || combatScript.dead || dashing)
             return false;
         else
             return true;

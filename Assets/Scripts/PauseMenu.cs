@@ -10,7 +10,6 @@ public static bool GameisPaused = false;
 public GameObject PauseGameUI;
 
     void Update()
-    
     {
     if(Input.GetKeyDown(KeyCode.Escape))
     {
