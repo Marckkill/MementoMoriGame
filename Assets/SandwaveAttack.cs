@@ -30,25 +30,28 @@ public class SandwaveAttack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Debug.Log(Time.time);
-        if((Time.time > interval + intervalStart) && sandWaveCount < 10 )
+        if ((Time.time > interval + intervalStart) && sandWaveCount < 10)
         {
-            Debug.Log("BATATA");
+            //Debug.Log("BATATA");
             intervalStart = Time.time;
             sandwave[sandWaveCount] = Instantiate(sandWavePrefab, sandWaveSpawnPoint);
             sandwave[sandWaveCount].GetComponent<Rigidbody2D>().velocity = new Vector2(waveVelocity * Time.fixedDeltaTime, 0);
             sandWaveCount++;
         }
-        else if (sandWaveCount >= 10)
+        if(sandwave[9] != null)
         {
-            if(sandwave[sandWaveCount-1].transform.position.x < sandWaveDespawnPoint.position.x)
+            intervalStart = 999999;
+            if(sandwave[9].transform.position.x < sandWaveDespawnPoint.position.x)
             {
-                for (int i = 0; i < 10; i++)
+                do
                 {
-                    Destroy(sandwave[i]);
+                    Destroy(sandwave[sandWaveCount - 1]);
+                    sandWaveCount--;
                 }
+                while (sandWaveCount > 0);
                 animator.SetTrigger("Idle");
             }
-            
+
         }
     }
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -94,13 +94,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Idle
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -183,7 +183,7 @@ MonoBehaviour:
   sandWaveSpawnPoint: {fileID: 0}
   sandWaveDespawnPoint: {fileID: 0}
   waveVelocity: -350
-  interval: 1
+  interval: 1.2
   sandWaveCount: 0
 --- !u!1107 &8793882673853855810
 AnimatorStateMachine:
