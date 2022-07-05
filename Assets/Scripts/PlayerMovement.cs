@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     //public bool takingDamage;
     //public bool dead;
     public bool dashing;
+
+
+    //tests
+    [HideInInspector] public Vector2 forceHandler;
     protected virtual void Start()
     {
         playerRB = gameObject.GetComponent<Rigidbody2D>();
@@ -72,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isCrouching && !dashing)
         {
             playerRB.velocity = new Vector2(moveSpeed, playerRB.velocity.y);
+            checkForceApplied();
         }
 
         if (wallSliding)
@@ -208,6 +213,14 @@ public class PlayerMovement : MonoBehaviour
         {
             wallSliding = false;
             playerAnim.SetBool("WallSlide", wallSliding);
+        }
+    }
+
+    private void checkForceApplied()
+    {
+        if(forceHandler != Vector2.zero)
+        {
+            playerRB.AddForce(forceHandler, ForceMode2D.Force); // serve pra adicionar efeitos tipo vento e os krl
         }
     }
     private void jumpAnim()
