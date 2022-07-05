@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRB.velocity = new Vector2(playerRB.velocity.x * Time.deltaTime, jumpForce);
         }
-        else if (wallSliding && Input.GetButtonDown("Jump"))
+        else if (touchingWall && Input.GetButtonDown("Jump")) // wallsliding
         {
             Vector2 force = new Vector2(wallJumpForce * wallJumpDirection.x * -gameObject.transform.localScale.x, wallJumpForce * wallJumpDirection.y);
 
@@ -160,6 +160,9 @@ public class PlayerMovement : MonoBehaviour
 
     void dash()
     {
+        if (wallSliding)
+            return;
+
         if(Input.GetButton("Fire3") && Time.time > dashCD + lastDash)
             StartCoroutine("dashHandler");
     }
