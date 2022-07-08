@@ -221,6 +221,7 @@ MonoBehaviour:
   wallJumpDirection: {x: 5, y: 40}
   canMove: 1
   dashing: 0
+  forceHandler: {x: 0, y: 0}
 --- !u!114 &6365372462528183638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +269,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.00013445805, y: -0.16578212}
