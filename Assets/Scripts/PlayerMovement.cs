@@ -139,6 +139,9 @@ public class PlayerMovement : MonoBehaviour
 
     void invertSprite()
     {
+        if (dashing)
+            return;
+
         if (Input.GetAxisRaw("Horizontal") > 0)
             transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
         else if (Input.GetAxisRaw("Horizontal") < 0)
