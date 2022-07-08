@@ -7,6 +7,8 @@ TagManager:
   - Damager
   - HealthBar
   - SessionManager
+  - Wall
+  - Ground
   layers:
   - Default
   - TransparentFX
