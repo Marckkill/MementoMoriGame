@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Animator playerAnim;
 
     [SerializeField] private PhysicsMaterial2D[] playerMaterials = new PhysicsMaterial2D[2]; //primeiro material = padrão, segundo material = tem fricção
-    [SerializeField] private float walkSpd = 5;
+    [SerializeField] float walkSpd = 5;
     [SerializeField] private float jumpForce = 5;
     [SerializeField] private float dashSpeed = 15;
     [SerializeField] private float dashTime = 1f;
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallJumpForce;
     [SerializeField] private Vector2 wallJumpDirection;
     public bool canMove = true;
+    public bool holdingBlock = false;
     private float lastDash;
     private bool isGrounded;
     private bool isCrouching;
@@ -87,14 +88,12 @@ public class PlayerMovement : MonoBehaviour
                 
             }
         }
-
-
         playerAnim.SetBool("Running", playerMoving);
     }
 
     void jump()
     {
-        if(isCrouching)
+        if(isCrouching || holdingBlock)
             return;
 
         if (Input.GetButtonDown("Jump") && isGrounded && !wallSliding)
@@ -139,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     void invertSprite()
     {
-        if (dashing)
+        if (dashing || holdingBlock)
             return;
 
         if (Input.GetAxisRaw("Horizontal") > 0)
@@ -155,20 +154,28 @@ public class PlayerMovement : MonoBehaviour
 
     void crouch()
     {
+        if (holdingBlock)
+            return;
+
         if (Input.GetAxisRaw("Vertical") < 0 && isGrounded)
         {
             isCrouching = true;
             playerRB.velocity = Vector2.zero;
+            playerBodyCollider.enabled = false;
         }
         else
+        {
             isCrouching = false;
+            playerBodyCollider.enabled = true;
+        }
+
 
         playerAnim.SetBool("Crouching", isCrouching);
     }
 
     void dash()
     {
-        if (wallSliding)
+        if (wallSliding || holdingBlock)
             return;
 
         if(Input.GetButton("Fire3") && Time.time > dashCD + lastDash)
