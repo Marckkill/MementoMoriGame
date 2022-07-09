@@ -9,6 +9,8 @@ TagManager:
   - SessionManager
   - Wall
   - Ground
+  - WallJumpColl
+  - CrouchColl
   layers:
   - Default
   - TransparentFX
