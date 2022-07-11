@@ -1,5 +1,11 @@
-# MementoMori
- Jogo DusGuri
+# Memento Mori
+Welcome to the GitHub repo of the game Memento Mori.
+A platformer Metroid Vania like game where you explore the world after is ill fated end.
+Fight the old gods to allow the world to achieve its memento mori, and rest is peace.
 
-Trello
-https://trello.com/b/4eeIZ1Me/momento-mori
+## Current Devs
+
+
+-  Matheus Ribeiros | Environment art and character art.
+-  Theo Viebrantz | Unity programmer
+-  José Fonseca | Level Designer 
