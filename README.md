@@ -1,7 +1,7 @@
 # Memento Mori
 Welcome to the GitHub repo of the game Memento Mori.
 A platformer Metroid Vania like game where you explore the world after is ill fated end.
-Fight the old gods to allow the world to achieve its memento mori, and rest is peace.
+Fight the old gods to allow the world to achieve its memento mori, and rest in peace.
 
 ## Current Devs
 
