@@ -208,12 +208,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkWallAndGround()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Slope")))
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Slope")) || playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Wall")))
             isGrounded = true;
         else
             isGrounded = false;
 
-        touchingWall = wallJumpColl.IsTouchingLayers(LayerMask.GetMask("Wall"));
+        touchingWall = wallJumpColl.IsTouchingLayers(LayerMask.GetMask("Wall")) || wallJumpColl.IsTouchingLayers(LayerMask.GetMask("Ground"));
         if (touchingWall && !isGrounded && playerRB.velocity.y < 0 && Input.GetAxisRaw("Horizontal") != 0)
         {
             wallSliding = true;
