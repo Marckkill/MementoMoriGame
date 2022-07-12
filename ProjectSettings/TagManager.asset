@@ -7,6 +7,10 @@ TagManager:
   - Damager
   - HealthBar
   - SessionManager
+  - Wall
+  - Ground
+  - WallJumpColl
+  - CrouchColl
   layers:
   - Default
   - TransparentFX
@@ -17,7 +21,7 @@ TagManager:
   - Ground
   - Player
   - Slope
-  - 
+  - Wall
   - 
   - 
   - 
@@ -44,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: backGroundFar
+    uniqueID: 4098569937
+    locked: 0
   - name: Background
     uniqueID: 2705091135
     locked: 0
@@ -55,6 +62,9 @@ TagManager:
     locked: 0
   - name: enemies
     uniqueID: 2900146089
+    locked: 0
+  - name: DamageEffects
+    uniqueID: 1583920199
     locked: 0
   - name: Player
     uniqueID: 1134123055

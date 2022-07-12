@@ -13,6 +13,8 @@ public class PlayerCombat : MonoBehaviour
 
     private float immuneTime = 5f; // 5 = 1 sec
     public bool immune;
+    public bool takingDamage;
+    public bool dead;
 
     private SpriteRenderer playerSprite;
     private void Start()
@@ -25,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void dmgPlayer(float enemyPosX, float dmg)
     {
-        if (immune)
+        if (immune || dead)
             return;
 
         sessionManager.loseHealth(dmg);
@@ -41,14 +43,14 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator knockBackHandler(float enemyPosX)
     {
-        movementScript.takingDamage = true;
-        playerAnim.SetBool("Hurt", movementScript.takingDamage);
+        takingDamage = true;
+        playerAnim.SetBool("Hurt", takingDamage);
         playerRB.velocity = new Vector2(knockback.x * -Mathf.Sign(gameObject.transform.position.x - enemyPosX), knockback.y);
         yield return new WaitForSeconds (knockbackTime);
-        movementScript.takingDamage = false;
-        playerAnim.SetBool("Hurt", movementScript.takingDamage);
+        takingDamage = false;
+        playerAnim.SetBool("Hurt", takingDamage);
 
-        if (movementScript.dead)
+        if (dead)
             playerRB.velocity = new Vector2(0, 0);
     }
 
@@ -67,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void playerDeath(float enemyPosX)
     {
-        movementScript.dead = true;
+        dead = true;
         playerAnim.SetBool("Death", true);
         StartCoroutine("knockBackHandler", enemyPosX);
     }
